@@ -1,6 +1,6 @@
 import './styles.css';
 import React from 'react';
-import { Landing } from '@homework-task/components/landing/Landing';
+import { Landing } from "@homework-task/components/landing/Landing";
 
 const App: React.FC = () => {
   return (
