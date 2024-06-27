@@ -1,20 +1,20 @@
 {
-  "compilerOptions": {
-    "target": "es2016",                                  
-    "jsx": "react-jsx",                                  
-    "module": "commonjs",                                
-    "baseUrl": "./",                                     
-    "paths": {
-      "@homework-task/*": ["src/*"]                      
-    },                                        
-    "esModuleInterop": true,                             
-    "forceConsistentCasingInFileNames": true,            
-    "strict": true,                                      
-    "noImplicitAny": true,                               
-    "strictNullChecks": true,                           
-    "noImplicitThis": true,                              
+    "compilerOptions": {
+        "target": "es2016",
+        "jsx": "react-jsx",
+        "module": "commonjs",
+        "baseUrl": "./",
+        "paths": {
+            "@homework-task/*": ["src/*"]
+        },
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
 
-    "skipLibCheck": true                                 
-  },
-  "include": ["src"]
+        "skipLibCheck": true
+    },
+    "include": ["src"]
 }
