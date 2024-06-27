@@ -1,12 +1,12 @@
 # marija-bogosavljevic-fatcat-task
 
-In this project following tasks are completed 
+In this project the following tasks are completed:
 
-## Transfering the existing project to TypeScript
-## Creating a List Component
-## Creating a Form Generator Component
-## Creating a Page Generator Component
-## Additional requirements that are provided
+1. Transfering the existing project to TypeScript
+2. Creating a List Component
+3. Creating a Form Generator Component
+4. Creating a Page Generator Component
+5. Additional requirements that are provided
 
 ## Table of Contents
 
@@ -31,7 +31,7 @@ Once the project is set up you can:
 
 1. Start the development server 
     `npm run dev`
-2. Check if there is any eslint errors
+2. Check if there are any eslint errors
     `npx eslint . --ext .js,.jsx,.ts,.tsx --fix `
 3. Open your browser and navigate to http://localhost:3000 to view the application.
 
