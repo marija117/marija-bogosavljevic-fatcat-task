@@ -17,3 +17,5 @@ export const Hero: React.FC<HeroProps> = ({ title, image }) => {
         </div>
     );
 };
+
+export type { HeroProps };

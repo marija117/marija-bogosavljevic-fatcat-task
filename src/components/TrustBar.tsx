@@ -15,3 +15,5 @@ export const TrustBar: React.FC<TrustBarProps> = ({ images }) => {
         </Marquee>
     );
 };
+
+export type { TrustBarProps };

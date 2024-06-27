@@ -28,3 +28,5 @@ export const ItemsShowcase: React.FC<ItemsProps> = ({ items }) => {
         </div>
     );
 };
+
+export type { ItemsProps };
