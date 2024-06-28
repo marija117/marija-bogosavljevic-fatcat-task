@@ -23,7 +23,7 @@ const sections: Section[] = [
     },
     {
         type: 'layoutSection',
-        props: { background: 'bg-gray-100', children: null },
+        props: { background: 'bg-gray', children: null },
         components: [
             {
                 type: 'componentItemsShowcase',
