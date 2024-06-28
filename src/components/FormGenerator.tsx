@@ -18,12 +18,14 @@ interface FormGeneratorProps<T extends FieldValues> {
         errors: FieldErrors<T>;
     }) => React.ReactNode;
     onSubmitSuccess: (data: T) => void;
+    onError?: (error: Error) => void;
 }
 
 export const FormGenerator = <T extends FieldValues>({
     validationSchema,
     renderForm,
     onSubmitSuccess,
+    onError,
 }: FormGeneratorProps<T>) => {
     const {
         handleSubmit,
@@ -34,22 +36,31 @@ export const FormGenerator = <T extends FieldValues>({
     });
 
     const mutation = useMutation(
-        (data: T) => {
+        async (data: T) => {
             const postData = {
                 ...data,
                 userId: 1,
             };
-            return fetch('https://jsonplaceholder.typicode.com/posts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(postData),
-            }).then((res) => res.json());
+            const response = await fetch(
+                'https://jsonplaceholder.typicode.com/posts',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(postData),
+                }
+            );
+            return response.json();
         },
         {
             onSuccess: (data) => {
                 onSubmitSuccess(data as T);
+            },
+            onError: (error: Error) => {
+                if (onError) {
+                    onError(error);
+                }
             },
         }
     );
@@ -59,7 +70,15 @@ export const FormGenerator = <T extends FieldValues>({
     };
 
     return (
-        <form onSubmit={void handleSubmit(onSubmit)}>
+        <form
+            onSubmit={(e) => {
+                handleSubmit(onSubmit)(e).catch((error: Error) => {
+                    if (onError) {
+                        onError(error);
+                    }
+                });
+            }}
+        >
             {renderForm({ control, errors })}
             <button type="submit" disabled={mutation.isLoading}>
                 {mutation.isLoading ? 'Submitting...' : 'Submit'}
