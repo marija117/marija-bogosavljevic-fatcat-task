@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { Control, Controller, FieldErrors } from 'react-hook-form';
 import { z } from 'zod';
@@ -21,7 +21,7 @@ interface FormData {
     body: string;
 }
 
-const PostForm = () => {
+const PostForm: React.FC = () => {
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
     const renderForm = ({
@@ -32,23 +32,50 @@ const PostForm = () => {
         errors: FieldErrors<FormData>;
     }) => (
         <>
-            <div>
-                <label htmlFor="title">Title</label>
+            <div className="mb-4">
+                <label
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="title"
+                >
+                    Title
+                </label>
                 <Controller
                     name="title"
                     control={control}
-                    render={({ field }) => <input id="title" {...field} />}
+                    render={({ field }) => (
+                        <input
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="title"
+                            {...field}
+                        />
+                    )}
                 />
-                {errors.title && <span>{errors.title.message}</span>}
+                {errors.title && (
+                    <span className="text-red text-xs italic">
+                        {errors.title.message}
+                    </span>
+                )}
             </div>
-            <div>
-                <label htmlFor="body">Body</label>
+            <div className="mb-4">
+                <label className="block text-sm font-bold mb-2" htmlFor="body">
+                    Body
+                </label>
                 <Controller
                     name="body"
                     control={control}
-                    render={({ field }) => <textarea id="body" {...field} />}
+                    render={({ field }) => (
+                        <textarea
+                            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                            id="body"
+                            {...field}
+                        />
+                    )}
                 />
-                {errors.body && <span>{errors.body.message}</span>}
+                {errors.body && (
+                    <span className="text-red text-xs italic">
+                        {errors.body.message}
+                    </span>
+                )}
             </div>
         </>
     );
@@ -60,15 +87,16 @@ const PostForm = () => {
     };
 
     return (
-        <>
+        <div className="max-w-md mx-auto mt-8">
             <FormGenerator<FormData>
                 validationSchema={validationSchema}
                 renderForm={renderForm}
                 onSubmitSuccess={onSubmitSuccess}
             />
-
-            {successMessage && <div>{successMessage}</div>}
-        </>
+            {successMessage && (
+                <div className="text-blue mt-4">{successMessage}</div>
+            )}
+        </div>
     );
 };
 
