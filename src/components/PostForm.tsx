@@ -93,9 +93,7 @@ const PostForm: React.FC = () => {
                 renderForm={renderForm}
                 onSubmitSuccess={onSubmitSuccess}
             />
-            {successMessage && (
-                <div className="text-blue mt-4">{successMessage}</div>
-            )}
+            {successMessage && <div className="mt-4">{successMessage}</div>}
         </div>
     );
 };
